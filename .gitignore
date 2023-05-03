@@ -1,0 +1,9 @@
+# Environmental files
+venv
+.env
+
+# python cached files
+__pycache__
+
+# system files
+.DS_Store
