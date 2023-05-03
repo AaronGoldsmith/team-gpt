@@ -19,11 +19,11 @@ def generate_professions(num_professions: int, professions: Optional[List[str]] 
     if num_professions < 1:
         raise ValueError(f"num_professions must be greater than 0, you provided {num_professions}")
     
-    # Setup instructions for user provided input
     if professions is None:
         professions = []
 
     if isinstance(professions, list):
+      # Check if we have more items in the professions list than we can provide a response for
       if len(professions)>num_professions:
           professions = professions[:num_professions]
           instruct = f"\nInclude professions exclusively from the list: {str(professions)}"
@@ -32,13 +32,8 @@ def generate_professions(num_professions: int, professions: Optional[List[str]] 
           instruct = f"\nInclude all professions from the list: {str(professions)} and { num_diff } other professions"
     else:
         raise TypeError(f"professions must be provided as a list of strings")
-     # Check if we have more items in the professions list than we can provide a response for
-    # if(len(professions)>num_professions):
-    #     professions = professions[:num_professions]
-    
-    # num_diff = abs(num_professions - len(professions))
-
-    
+  
+    # Setup instructions for user provided input
     prompt = f"""
     Please provide a JSON-formatted string containing a list of {num_professions} distinct professions in any field along with their skills/expertise. For each profession, include what they are known for, what they might not be very well known for, and how they could contribute to a cross-functional team project. 
     The JSON string should look like the following example:

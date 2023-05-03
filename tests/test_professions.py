@@ -6,7 +6,7 @@ class TestPromptGenerator():
     def setup_method(self):
         self.prompt_generator = PromptGenerator()
 
-    def test_generate_professions(self):
+    def test_generated_json(self):
         professions = ['Doctor', 'Sushi Chef', 'Chocolatier', 'Construction Worker', 'Engineer', 'Product Manager']
         number_allowed = 2
         generated_professions = self.prompt_generator.generate_professions(number_allowed, professions)
@@ -32,7 +32,12 @@ class TestPromptGenerator():
         generated_professions = self.prompt_generator.generate_professions(number_allowed)
         # Check that the generated professions are random by comparing with multiple runs
         generated_professions_2 = self.prompt_generator.generate_professions(number_allowed)
-        assert generated_professions != generated_professions_2
+
+        profession_names_1 = [profession['name'] for profession in json.loads(generated_professions)['professions']]
+        profession_names_2 = [profession['name'] for profession in json.loads(generated_professions_2)['professions']]
+        
+        # the order shouldn't matter when comparing the lists
+        assert set(profession_names_1) != set(profession_names_2)
 
     def test_generate_single_profession(self):
         number_allowed = 1
