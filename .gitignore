@@ -7,3 +7,6 @@ __pycache__
 
 # system files
 .DS_Store
+
+# workspace and project setup
+*.code-workspace

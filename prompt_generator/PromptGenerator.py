@@ -1,32 +1,20 @@
-import openai
-import os
-
-from dotenv import load_dotenv
-import Professions 
+from prompt_generator.professions import Professions 
+from prompt_generator.utils import completions
 
 class PromptGenerator:
 
-  def __init__(self):
-      # Load API key from environment variables
-      load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
-      openai.api_key = os.getenv("OPENAI_API_KEY")
+    def __init__(self):
+        self.gpt_completions = completions.GPTCompletions()
 
-  def generate_professions(self, num_professions, professions=["None provided"]):
-      prompt = Professions.generate_professions(num_professions, professions)
-    
-      #  use prompt engineering to generate a structured response
-      completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
-      )
+    #  use prompt design to generate a structured response
+    def generate_professions(self, num_professions:int, profession_list=None):
+        prompt = Professions.generate_professions(num_professions, profession_list)
+        completion = self.gpt_completions.gpt_response(prompt)
 
-      return completion.choices[0].message.content
-
-if __name__ == '__main__':
-    prompt_generator = PromptGenerator()
-    professions = prompt_generator.generate_professions(2, ['Doctor','Sushi Chef','Chocolatier','Construction Worker','Model','Product Manager'])
-    print(professions)
+        return completion.message.content
 
 
+# if __name__ == '__main__':
+#     prompt_generator = PromptGenerator()
+#     professions = prompt_generator.generate_professions(['Doctor', 'Boxer', 'Astronaut'])
+#     print(professions)
