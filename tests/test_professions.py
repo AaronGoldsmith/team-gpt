@@ -7,7 +7,7 @@ class TestPromptGenerator():
         self.prompt_generator = PromptGenerator()
 
     def test_generate_professions(self):
-        professions = ['Doctor', 'Sushi Chef', 'Chocolatier', 'Construction Worker', 'Model', 'Product Manager']
+        professions = ['Doctor', 'Sushi Chef', 'Chocolatier', 'Construction Worker', 'Engineer', 'Product Manager']
         number_allowed = 5
         generated_professions = self.prompt_generator.generate_professions(number_allowed, professions)
         # test that each expected key is present in the response dict
