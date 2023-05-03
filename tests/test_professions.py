@@ -1,5 +1,5 @@
 import json
-from ..prompt_generator.PromptGenerator import PromptGenerator
+from prompt_generator.PromptGenerator import PromptGenerator
 
 class TestPromptGenerator():
 
@@ -10,7 +10,8 @@ class TestPromptGenerator():
         professions = ['Doctor', 'Sushi Chef', 'Chocolatier', 'Construction Worker', 'Engineer', 'Product Manager']
         number_allowed = 5
         generated_professions = self.prompt_generator.generate_professions(number_allowed, professions)
-        # test that each expected key is present in the response dict
+        # check that each expected key is present in the response dict
+        # check that we have the expected number of keys in our list
         try:
             parsed_professions = json.loads(generated_professions)
             assert isinstance(parsed_professions, dict)

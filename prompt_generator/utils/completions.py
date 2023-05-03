@@ -6,7 +6,7 @@ class GPTCompletions:
 
     def __init__(self):
         # Load API key from environment variables
-        load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
+        load_dotenv(os.path.join(os.path.dirname(__file__), '..','..', '.env'))
         openai.api_key = os.getenv("OPENAI_API_KEY")
 
     def gpt_response(self, prompt):
