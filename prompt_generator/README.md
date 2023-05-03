@@ -13,7 +13,8 @@ This module uses OpenAI's GPT-3.5-turbo to generate a JSON-formatted string cont
 ## Usage
 
 ```python
-professions = prompt_generator.generate_professions(2,['Doctor', 'Boxer', 'Astronaut'])
+prompt_generator = PromptGenerator()
+prompt_generator.generate_professions(2,['Doctor', 'Boxer', 'Astronaut'])
 ```
 
 Example output
