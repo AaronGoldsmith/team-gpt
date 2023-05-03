@@ -1,4 +1,6 @@
-def generate_professions(num_professions: int, professions=None):
+from typing import List, Optional
+
+def generate_professions(num_professions: int, professions: Optional[List[str]] = None) -> List[str]:
     """
     Generates a list of professions based on the input parameters.
 
