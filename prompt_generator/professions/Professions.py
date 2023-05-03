@@ -22,13 +22,16 @@ def generate_professions(num_professions: int, professions: Optional[List[str]] 
     # Setup instructions for user provided input
     if professions is None:
         professions = []
-    elif len(professions)>num_professions:
-        professions = professions[:num_professions]
-        instruct = f"\nInclude professions exclusively from the list: {str(professions)}"
+
+    if isinstance(professions, list):
+      if len(professions)>num_professions:
+          professions = professions[:num_professions]
+          instruct = f"\nInclude professions exclusively from the list: {str(professions)}"
+      else:
+          num_diff = num_professions - len(professions)
+          instruct = f"\nInclude all professions from the list: {str(professions)} and { num_diff } other professions"
     else:
-        num_diff = num_professions - len(professions)
-        instruct = f"\nInclude all professions from the list: {str(professions)} and { num_diff } other professions"
-    
+        raise TypeError(f"professions must be provided as a list of strings")
      # Check if we have more items in the professions list than we can provide a response for
     # if(len(professions)>num_professions):
     #     professions = professions[:num_professions]
