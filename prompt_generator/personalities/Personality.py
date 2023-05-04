@@ -64,17 +64,6 @@ class Personality:
         """
         Save personality to a file
         """
-        # traits_with_desc = {}
-        # for trait, value in personality.traits.items():
-        #     if trait in DEFAULT_TRAITS:
-        #         desc = DEFAULT_TRAITS[trait]
-        #     else:
-        #         desc = ""
-        #     traits_with_desc[trait] = {"value": value, "description": desc}
-
-        # Save personality data to file
-        # with open(filename, 'w') as f:
-            # json.dump(traits_with_desc, f, indent=2)
         with open(filename, 'w') as f:
             json.dump(personality.__dict__, f)
 
@@ -84,10 +73,7 @@ class Personality:
         """
         with open(filename, 'r') as f:
             personality_data = json.load(f)
-        # print(personality_data)
-        # print()
         d = personality_data['custom_traits']
-        print(d)
 
         return Personality( **personality_data['traits'], saved_traits=personality_data["custom_traits"])
 
