@@ -1,10 +1,10 @@
 # Test that our connection to OpenAI works
 import os
 import openai
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
-# load in env file from root
-load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
+# Find and load the .env file from the project root
+load_dotenv(find_dotenv())
 
 # Initial test to check that our API key is loaded from the root .env file 
 def test_openai_connection():
