@@ -4,7 +4,8 @@ This module uses OpenAI's GPT-3.5-turbo to generate a JSON-formatted string cont
 
 ## Features
 
-- Generate a list of professions with their skills and expertise
+- Generate a [list of professions](#generate-professions) with their skills and expertise. 
+- Generate a [definition for new Personality traits](#generate-trait-definitions)
 - Customize the number of professions in the generated list
 - Provide a list of preferred professions to include in the generated response
 - Get a JSON-formatted string containing the profession details
@@ -12,6 +13,8 @@ This module uses OpenAI's GPT-3.5-turbo to generate a JSON-formatted string cont
 
 ## Usage
 
+
+### Generate Professions
 ```python
 prompt_generator = PromptGenerator()
 prompt_generator.generate_professions(2,['Doctor', 'Boxer', 'Astronaut'])
@@ -35,4 +38,11 @@ Example output
     }
   ]
 }
+```
+
+### Generate Trait Definitions
+
+```python
+generator = PromptGenerator()
+description = generator.get_trait_description('Shy')
 ```
