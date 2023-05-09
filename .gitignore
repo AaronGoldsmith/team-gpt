@@ -10,3 +10,6 @@ __pycache__
 
 # workspace and project setup
 *.code-workspace
+
+# Generated files
+*.json
